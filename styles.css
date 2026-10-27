@@ -432,6 +432,25 @@ a { color: inherit; }
   color: var(--text);
 }
 
+/* Small availability line under the hero button */
+.hero-status {
+  display: flex;
+  align-items: baseline;
+  gap: .55rem;
+  margin: 1rem 0 0;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.status-dot {
+  flex: none;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #2E8B57; /* "available" green, same in both themes */
+  box-shadow: 0 0 0 3px rgb(46 139 87 / .18);
+  transform: translateY(-1px);
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
