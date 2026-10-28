@@ -1,6 +1,7 @@
 /* =========================================================
    Jayasai Gouthaman · portfolio
-   Mobile-first. Light by default, dark via prefers-color-scheme.
+   Mobile-first. Light by default; dark via the header theme toggle
+   (sets data-theme="dark" on <html>, remembered in localStorage).
    ========================================================= */
 
 /* ---------- Tokens ---------- */
@@ -29,26 +30,26 @@
   --gutter: clamp(1.25rem, 5vw, 3rem);
   --max: 1200px;
 
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161312;
-    --surface: #1F1B19;
-    --surface-2: #26211F;
-    --text: #F2ECE8;
-    --text-muted: #B4AAA4;
-    --line: #342D2A;
+:root[data-theme="dark"] {
+  --bg: #161312;
+  --surface: #1F1B19;
+  --surface-2: #26211F;
+  --text: #F2ECE8;
+  --text-muted: #B4AAA4;
+  --line: #342D2A;
 
-    --accent: #8FB0E8;
-    --accent-strong: #A9C3EF;
-    --accent-ink: #0E1420;
-    --tint: #1E2636;
+  --accent: #8FB0E8;
+  --accent-strong: #A9C3EF;
+  --accent-ink: #0E1420;
+  --tint: #1E2636;
 
-    --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 8px 24px rgb(0 0 0 / .25);
-    --shadow-hover: 0 2px 4px rgb(0 0 0 / .35), 0 16px 40px rgb(0 0 0 / .4);
-  }
+  --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 8px 24px rgb(0 0 0 / .25);
+  --shadow-hover: 0 2px 4px rgb(0 0 0 / .35), 0 16px 40px rgb(0 0 0 / .4);
+
+  color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -227,6 +228,25 @@ a { color: inherit; }
   transition: color .2s, background-color .2s;
 }
 .social a:hover { color: var(--accent-strong); background: var(--tint); }
+
+/* Theme toggle: moon in light mode, sun in dark mode */
+.theme-toggle {
+  order: 2;
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color .2s, background-color .2s;
+}
+.theme-toggle:hover { color: var(--accent-strong); background: var(--tint); }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
 @media (min-width: 1024px) {
   .nav-toggle { display: none; }

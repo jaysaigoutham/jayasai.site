@@ -14,6 +14,29 @@
   var year = document.querySelector("[data-year]");
   if (year) year.textContent = new Date().getFullYear();
 
+  /* ---------- Light / dark theme (light by default) ---------- */
+  var THEME_KEY = "jg-theme";
+  var root = document.documentElement;
+  var themeToggle = document.querySelector(".theme-toggle");
+  var themeColor = document.querySelector('meta[name="theme-color"]');
+
+  function applyTheme(theme) {
+    var dark = theme === "dark";
+    if (dark) root.setAttribute("data-theme", "dark");
+    else root.removeAttribute("data-theme");
+    if (themeColor) themeColor.setAttribute("content", dark ? "#161312" : "#FAF7F4");
+    if (themeToggle) themeToggle.setAttribute("aria-pressed", String(dark));
+  }
+
+  if (themeToggle) {
+    applyTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+    themeToggle.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      applyTheme(next);
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* private mode: ignore */ }
+    });
+  }
+
   /* ---------- Mobile menu ---------- */
   function setMenu(open) {
     if (!toggle || !menu) return;

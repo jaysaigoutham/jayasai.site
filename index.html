@@ -5,8 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jayasai (Jay) Gouthaman · Hands-on Software Engineering Leader</title>
   <meta name="description" content="Kia ora, I'm Jay. A hands-on software engineering leader in Auckland with 12+ years building mobile, frontend, backend services and cloud software, and growing the people who build it with me.">
-  <meta name="theme-color" content="#FAF7F4" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#161312" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#FAF7F4">
+  
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("jg-theme") === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#161312");
+        }
+      } catch (e) { /* storage blocked: stay light */ }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
@@ -55,6 +65,11 @@
           </a>
         </li>
       </ul>
+
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+      </button>
     </div>
   </header>
 
