@@ -1472,6 +1472,10 @@ a { color: inherit; }
   border-radius: var(--radius);
 }
 .carousel-slide img { object-position: center 25%; }
+/* Designed posters: show the whole graphic, with side bars in its own maroon */
+.photo-poster,
+.photo-poster .lightbox-trigger:not(.text-link) { background: #431419; }
+.carousel-slide .photo-poster img { object-fit: contain; object-position: center; }
 .carousel-controls {
   display: flex;
   align-items: center;
